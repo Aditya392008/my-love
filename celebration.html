@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Gurnoor 🎉</title>
+<style>
+body {
+  margin:0; overflow:hidden; height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle,#ff9a9e,#fad0c4);
+  animation:bgPulse 20s ease infinite alternate;
+  opacity:0; animation:fadeInPage 2s forwards;
+}
+@keyframes fadeInPage { to{opacity:1;} }
+@keyframes bgPulse {
+  from{background:radial-gradient(circle,#ff9a9e,#fad0c4);}
+  to{background:radial-gradient(circle,#a18cd1,#fbc2eb);}
+}
+h1 {
+  position:absolute; top:35%; width:100%;
+  text-align:center; color:white;
+  font-size:4rem; text-shadow:0 0 20px #fff;
+  animation:fadeIn 3s forwards;
+}
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+.balloon {
+  position:absolute; bottom:-150px;
+  width:80px; height:100px;
+  border-radius:50%;
+  opacity:0.8;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%{transform:translateY(0) rotate(0);}
+  100%{transform:translateY(-120vh) rotate(360deg);}
+}
+.balloon::after{
+  content:""; position:absolute; bottom:-40px; left:50%;
+  width:2px; height:40px; background:white; transform:translateX(-50%);
+}
+button{
+  position:absolute; top:70%; left:50%;
+  transform:translateX(-50%);
+  background:white; color:#ff6f91; border:none;
+  padding:15px 30px; border-radius:30px; font-size:1.2rem;
+  cursor:pointer; transition:0.3s; animation:fadeIn 3s forwards 3s;
+}
+button:hover{transform:translateX(-50%) scale(1.1);}
+
+/* Confetti for transitions */
+.confetti {
+  position:absolute; width:10px; height:10px;
+  background:var(--color);
+  top:0; opacity:0.9; animation:fall 3s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday, Gurnoor! 🎉</h1>
+<button onclick="nextPage()">See Something Special 💖</button>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d24a03db43.mp3?filename=happy-birthday-118006.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const colors=['#ff6f91','#ff9671','#ffc75f','#f9f871','#a2d2ff','#bde0fe'];
+for(let i=0;i<25;i++){
+  let b=document.createElement('div');
+  b.classList.add('balloon');
+  b.style.left=Math.random()*100+'vw';
+  b.style.background=colors[Math.floor(Math.random()*colors.length)];
+  b.style.animationDuration=8+Math.random()*5+'s';
+  b.style.width=60+Math.random()*40+'px';
+  b.style.height=80+Math.random()*40+'px';
+  document.body.appendChild(b);
+}
+
+function nextPage(){
+  for(let i=0;i<60;i++){
+    let c=document.createElement('div');
+    c.classList.add('confetti');
+    c.style.left=Math.random()*100+'vw';
+    c.style.setProperty('--color',`hsl(${Math.random()*360},80%,70%)`);
+    c.style.animationDuration=2+Math.random()*2+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+  document.body.style.transition='opacity 2s';
+  document.body.style.opacity='0';
+  setTimeout(()=>window.location.href='message.html',2000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Gurnoor 💕</title>
+<style>
+body {
+  margin:0; padding:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+  color:white; text-align:center;
+  height:100vh; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  animation:bgShift 10s infinite alternate;
+  opacity:0; animation:fadeInPage 2s forwards;
+}
+@keyframes fadeInPage { to{opacity:1;} }
+@keyframes bgShift {
+  from { background:linear-gradient(120deg,#ff9a9e,#fad0c4); }
+  to { background:linear-gradient(120deg,#a1c4fd,#c2e9fb); }
+}
+h1 {
+  font-size:3rem;
+  opacity:0;
+  animation:fadeText 2s forwards 0.5s;
+}
+p {
+  opacity:0; animation:fadeText 2s forwards 1.5s;
+}
+@keyframes fadeText { to{opacity:1; transform:scale(1.05);} }
+button {
+  margin-top:40px;
+  background:white; color:#ff6f91;
+  border:none; padding:15px 30px;
+  border-radius:30px; font-size:1.2rem;
+  cursor:pointer;
+  transition:0.3s;
+  opacity:0; animation:fadeText 2s forwards 2.5s;
+}
+button:hover { transform:scale(1.1); }
+
+/* Confetti setup */
+.confetti {
+  position: absolute;
+  width: 10px; height: 10px;
+  background: var(--color);
+  top: 0; opacity: 0.9;
+  animation: fall 3s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<h1>🌸 Welcome, Gurnoor! 🌸</h1>
+<p>A magical surprise awaits you...</p>
+<button onclick="nextPage()">Open Your Surprise 🎁</button>
+
+<script>
+function nextPage(){
+  // Trigger confetti burst
+  for(let i=0;i<50;i++){
+    let c=document.createElement('div');
+    c.classList.add('confetti');
+    c.style.left=Math.random()*100+'vw';
+    c.style.setProperty('--color',`hsl(${Math.random()*360},80%,70%)`);
+    c.style.animationDuration=2+Math.random()*2+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+  // Fade out page
+  document.body.style.transition='opacity 2s';
+  document.body.style.opacity='0';
+  setTimeout(()=>window.location.href='celebration.html',2000);
+}
+</script>
+</body>
+</html>
